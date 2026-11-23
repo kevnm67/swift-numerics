@@ -17,6 +17,8 @@ let excludedFilenames = ["CMakeLists.txt", "README.md"]
 let package = Package(
   
   name: "swift-numerics",
+  // slowhand patch: iOS 16+ so arm64e objects get class_ro_t pointer signing.
+  platforms: [.macOS(.v13), .iOS(.v16), .macCatalyst(.v16), .tvOS(.v16), .watchOS(.v9), .visionOS(.v1)],
   products: [
     .library(name: "ComplexModule", targets: ["ComplexModule"]),
     .library(name: "Numerics", targets: ["Numerics"]),
